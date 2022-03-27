@@ -2,7 +2,7 @@
   <div id="app">
     <!-- passing the todos to the component as properties but we refer this as props -->
     <!-- passed down the todos as "todos" and use the "todos" as props in Todos.vue -->
-    <Todos v-bind:todos="todos" />
+    <Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo" />
     
     <!-- define events; it says on the add-todo event call the addTodo function which define in script tag -->
     <AddTodo v-on:add-todo="addTodo" />
@@ -57,6 +57,10 @@ export default {
       // add it to the todos array using spread operator
       // spread(...) operator - copy current todos array and add new todo object to it
       this.todos = [...this.todos, newTodoObj];
+    },
+    // filters out the todo that matches the passed id
+    deleteTodo(todoId) {
+      this.todos = this.todos.filter(todo => todo.id !== todoId);
     }
   }
 }

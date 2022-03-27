@@ -4,6 +4,8 @@
   <div v-bind:class="{ 'completed': todo.completed }">
     <!-- change the todo status -->
     <p v-on:click="markComplete">{{ todo.title }}</p>
+    <!-- Delete todo event and send todo id -->
+    <button @click="$emit('delete-todo', todo.id)">Delete</button>
   </div>
 </template>
 

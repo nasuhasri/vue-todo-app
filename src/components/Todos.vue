@@ -6,7 +6,8 @@
       <!-- when looping must add unique key to every item -->
       <li v-bind:key="todo.id" v-for="todo in todos">
         <!-- pass the current todo object to the Todo component -->
-        <Todo v-bind:todo="todo" />
+        <!-- define event delete-todo that emits an event also called "delete-todo" -->
+        <Todo v-bind:todo="todo" v-on:delete-todo="$emit('delete-todo', todo.id)" />
       </li>
     </ul>
   </div>
